@@ -1,0 +1,17 @@
+<ng-container [formGroup]="form">
+
+  <label
+    [for]="control"
+    class="text-14">{{label}}</label>
+
+  <input
+    [type]="type"
+    [id]="control"
+    [name]="control"
+    [formGroup]="form"
+    [formControlName]="control"
+    [ngClass]="{'invalid-component': (statusChanges$ | async) === 'INVALID'}">
+
+  {{statusChanges$ | async}}
+
+</ng-container>

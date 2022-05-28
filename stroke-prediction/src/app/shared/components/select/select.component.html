@@ -1,0 +1,21 @@
+<ng-container [formGroup]="form">
+
+  <label
+    [for]="control"
+    class="text-14">{{label}}</label>
+
+  <select
+    [id]="control"
+    [name]="control"
+    [formGroup]="form"
+    [formControlName]="control">
+
+    <option [ngValue]="null" selected disabled hidden>Selecione uma opção...</option>
+
+    <ng-container *ngFor="let option of data">
+      <option [ngValue]="option.id">{{option.display}}</option>
+    </ng-container>
+
+  </select>
+
+</ng-container>
