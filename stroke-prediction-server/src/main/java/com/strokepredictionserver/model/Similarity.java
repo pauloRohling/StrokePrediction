@@ -27,9 +27,10 @@ public class Similarity {
     }
 
     private Double sumWeights() {
-        return this.weight.getGender() + this.weight.getAge() + this.weight.getHypertension() +
+        double weights = this.weight.getGender() + this.weight.getAge() + this.weight.getHypertension() +
                 this.weight.getHeartDisease() + this.weight.getAvgGlucoseLevel() + this.weight.getBmi() +
                 this.weight.getSmokingStatus();
+        return weights > 0.0 ? weights : 1.0;
     }
 
     private Double getNumericSimilarity(Double value1, Double value2, Double average) {

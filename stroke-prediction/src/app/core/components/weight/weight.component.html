@@ -1,1 +1,47 @@
-<p>weight works!</p>
+<form [formGroup]="form" class="flex flex-col w-full h-full space-y-6">
+
+  <span class="text-16 text-prussian-blue font-semibold">Pesos</span>
+
+  <app-input-text
+    [type]="'number'"
+    [form]="form"
+    [control]="'gender'"
+    [label]="'Gênero'"></app-input-text>
+
+  <app-input-text
+    [type]="'number'"
+    [form]="form"
+    [control]="'age'"
+    [label]="'Idade'"></app-input-text>
+
+  <app-input-text
+    [type]="'number'"
+    [form]="form"
+    [control]="'hypertension'"
+    [label]="'Histórico de hipertensão'"></app-input-text>
+
+  <app-input-text
+    [type]="'number'"
+    [form]="form"
+    [control]="'heartDisease'"
+    [label]="'Histórico de doença cardíaca'"></app-input-text>
+
+  <app-input-text
+    [type]="'number'"
+    [form]="form"
+    [control]="'avgGlucoseLevel'"
+    [label]="'Nível médio de glicose'"></app-input-text>
+
+  <app-input-text
+    [type]="'number'"
+    [form]="form"
+    [control]="'bmi'"
+    [label]="'IMC'"></app-input-text>
+
+  <app-input-text
+    [type]="'number'"
+    [form]="form"
+    [control]="'smokingStatus'"
+    [label]="'Tabagismo'"></app-input-text>
+
+</form>

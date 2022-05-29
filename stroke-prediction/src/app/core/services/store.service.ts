@@ -1,8 +1,12 @@
 import { Injectable } from "@angular/core";
 import { IDataItem } from "../model/data.item.interface";
+import { BehaviorSubject } from "rxjs";
+import { RecordWeight } from "../model/record.weight";
 
 @Injectable({providedIn: "root"})
 export class StoreService {
+
+  weights$: BehaviorSubject<RecordWeight>
 
   genders: Array<IDataItem>;
   yesNo: Array<IDataItem>;
@@ -26,6 +30,8 @@ export class StoreService {
       { id: 2, display: "Ex-fumante" },
       { id: 3, display: "Fumante" },
     ];
+
+    this.weights$ = new BehaviorSubject<RecordWeight>(new RecordWeight());
   }
 
 }

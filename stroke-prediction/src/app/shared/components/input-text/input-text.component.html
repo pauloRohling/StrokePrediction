@@ -1,8 +1,16 @@
 <ng-container [formGroup]="form">
 
-  <label
-    [for]="control"
-    class="text-14">{{label}}</label>
+  <span class="flex justify-between">
+    <label
+      [for]="control"
+      class="text-14">{{label}}</label>
+
+    <span
+      *ngIf="(statusChanges$ | async) === 'INVALID'"
+      class="text-imperial-red italic">
+      Obrigatório
+    </span>
+  </span>
 
   <input
     [type]="type"
@@ -11,7 +19,5 @@
     [formGroup]="form"
     [formControlName]="control"
     [ngClass]="{'invalid-component': (statusChanges$ | async) === 'INVALID'}">
-
-  {{statusChanges$ | async}}
 
 </ng-container>

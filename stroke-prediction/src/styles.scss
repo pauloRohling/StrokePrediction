@@ -30,6 +30,10 @@ select {
   @apply w-full text-14 p-3 bg-transparent rounded-lg;
 }
 
+button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   margin: 0;

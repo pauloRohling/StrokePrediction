@@ -1,7 +1,13 @@
-<form [formGroup]="form" class="flex flex-col w-2/3 h-full space-y-6">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel elit et est viverra consectetur eget vel massa. Sed bibendum, mauris a rutrum tincidunt, risus neque maximus dui, eu ullamcorper urna elit sit amet est.</p>
+<div class="flex flex-col space-y-3 text-20 text-justify leading-7 tracking-tight">
+  <p>De acordo com a Organização Mundial da Saúde (OMS), o AVC é a segunda causa de morte mais popular no mundo, representando aproximadamente 11% do total de mortes (OMS, 2020).</p>
+  <p>Este sistema de raciocínio baseado em casos tem como objetivo indicar a possibilidade de uma pessoa vir a sofrer um AVC de acordo com a similaridade entre o seu prontuário médico e os prontuários médicos de pacientes cadastrados na base de dados do sistema.</p>
+</div>
 
-  <div class="flex space-x-6 w-full">
+<div class="flex w-full space-x-6">
+  <form [formGroup]="form" class="flex flex-col w-2/3 h-full space-y-6">
+
+    <span class="text-16 text-prussian-blue font-semibold">Formulário</span>
+
     <app-select
       [data]="storeService.genders"
       [form]="form"
@@ -13,57 +19,62 @@
       [form]="form"
       [control]="'age'"
       [label]="'Idade'"></app-input-text>
-  </div>
 
-  <div class="flex space-x-6 w-full">
+    <app-select
+      [data]="storeService.yesNo"
+      [form]="form"
+      [control]="'hypertension'"
+      [label]="'Histórico de hipertensão'"></app-select>
+
+    <app-select
+      [data]="storeService.yesNo"
+      [form]="form"
+      [control]="'heartDisease'"
+      [label]="'Histórico de doença cardíaca'"></app-select>
+
     <app-input-text
       [type]="'number'"
       [form]="form"
-      [control]="'weight'"
-      [label]="'Peso'"></app-input-text>
+      [control]="'avgGlucoseLevel'"
+      [label]="'Nível médio de glicose'"></app-input-text>
 
-    <app-input-text
-      [type]="'number'"
+    <div class="flex space-x-6 w-full">
+      <app-input-text
+        [type]="'number'"
+        [form]="form"
+        [control]="'weight'"
+        [label]="'Peso'"></app-input-text>
+
+      <app-input-text
+        [type]="'number'"
+        [form]="form"
+        [control]="'height'"
+        [label]="'Altura'"></app-input-text>
+    </div>
+
+    <app-select
+      [data]="storeService.smokingStatus"
       [form]="form"
-      [control]="'height'"
-      [label]="'Altura'"></app-input-text>
-  </div>
+      [control]="'smokingStatus'"
+      [label]="'Tabagismo'"></app-select>
 
-  <app-select
-    [data]="storeService.yesNo"
-    [form]="form"
-    [control]="'hypertension'"
-    [label]="'Histórico de hipertensão'"></app-select>
+  </form>
 
-  <app-select
-    [data]="storeService.yesNo"
-    [form]="form"
-    [control]="'heartDisease'"
-    [label]="'Histórico de doença cardíaca'"></app-select>
+  <div class="border-l border-prussian-blue"></div>
 
-  <app-input-text
-    [type]="'number'"
-    [form]="form"
-    [control]="'avgGlucoseLevel'"
-    [label]="'Nível médio de glicose'"></app-input-text>
+  <section class="w-1/3 h-full">
+    <app-weights [form]="formWeights"></app-weights>
+  </section>
+</div>
 
-  <app-select
-    [data]="storeService.smokingStatus"
-    [form]="form"
-    [control]="'smokingStatus'"
-    [label]="'Tabagismo'"></app-select>
-
-  {{form.getRawValue() | json}}
+<div class="flex justify-center w-full space-x-6">
+  <button
+    (click)="onReset()"
+    class="border border-prussian-blue p-3 rounded-lg text-14 w-full max-w-xs">Redefinir pesos</button>
 
   <button
     [type]="'submit'"
     (click)="onSubmit()"
-    class="bg-imperial-red p-3 rounded-lg text-14 text-white">Calcular</button>
-
-</form>
-
-<section class="w-1/3 h-full">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel elit et est viverra consectetur eget vel massa. Sed bibendum, mauris a rutrum tincidunt, risus neque maximus dui, eu ullamcorper urna elit sit amet est. Vivamus consectetur dolor at sapien pellentesque ultricies. Donec dignissim est mauris, non ultricies quam mollis at. Etiam dapibus lectus ut venenatis mattis. Nullam blandit accumsan metus nec pretium. Pellentesque ullamcorper vel tortor id mattis. Pellentesque lobortis scelerisque pretium. Aliquam vitae condimentum erat, ut hendrerit diam. Maecenas consectetur faucibus magna. Donec ut pulvinar velit. Vivamus tempor odio a augue interdum euismod. Nulla hendrerit tristique ante vitae accumsan.</p>
-  <p>Mauris imperdiet malesuada velit et maximus. Duis quis tellus efficitur, fermentum quam sed, aliquet purus. Integer felis leo, finibus eu ultricies ac, semper sit amet elit. Morbi egestas urna sapien, quis condimentum libero consequat rutrum. Cras dapibus turpis lorem, vitae tincidunt tellus facilisis sit amet. Quisque tempor non lectus et tempus. In malesuada a elit euismod fermentum. Morbi auctor metus et pulvinar aliquet. Mauris cursus, ipsum non rhoncus posuere, nunc massa consectetur elit, non pulvinar massa tortor eget odio. Ut ac nisi urna. Vestibulum id molestie ipsum, vitae faucibus massa. Morbi a iaculis urna, eu posuere nisi. Integer ut felis sed dui hendrerit auctor nec vitae metus. Mauris vitae mollis nisl. Maecenas justo leo, pulvinar ut fringilla vel, blandit volutpat quam.</p>
-  <p>Sed turpis dolor, porta scelerisque rutrum quis, mattis nec nulla. Donec convallis ante volutpat, mattis risus ut, mollis odio. Donec nibh nulla, hendrerit non libero vel, venenatis accumsan felis. Nam dictum, sapien vitae posuere hendrerit, libero nulla hendrerit velit, ut sollicitudin nulla nibh id lectus. Aliquam ut augue sapien. Ut scelerisque, tortor sit amet posuere iaculis, dolor tortor lacinia velit, in hendrerit magna ipsum quis libero. Vivamus ac purus metus. Quisque ullamcorper augue non lobortis rhoncus. Fusce consectetur leo id ullamcorper euismod. Etiam sed erat efficitur, elementum libero maximus, finibus nisl.</p>
-</section>
+    [disabled]="(form.statusChanges | async) === 'INVALID' || (formWeights.statusChanges | async) === 'INVALID'"
+    class="bg-imperial-red p-3 rounded-lg text-14 text-white w-full max-w-xs">Calcular</button>
+</div>

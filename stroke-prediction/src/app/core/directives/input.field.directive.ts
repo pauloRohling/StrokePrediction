@@ -1,9 +1,10 @@
 import { Directive, Input } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup } from "@angular/forms";
 import { Observable } from "rxjs";
+import { UnsubscribeDirective } from "./unsubscribe.directive";
 
 @Directive()
-export class InputFieldDirective {
+export class InputFieldDirective extends UnsubscribeDirective {
   @Input() label: string;
   @Input() control: string;
   @Input() type: string;
@@ -11,6 +12,7 @@ export class InputFieldDirective {
   @Input() form: FormGroup;
 
   constructor(protected formBuilder: FormBuilder) {
+    super();
     this.label = "";
     this.type = "text";
     this.control = "";

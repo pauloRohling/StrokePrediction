@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Record } from "../../model/record";
 import { UnsubscribeDirective } from "../../directives/unsubscribe.directive";
-import { BehaviorSubject, catchError, concatMap, map, of, Subject, tap } from "rxjs";
+import { BehaviorSubject, catchError, concatMap, map, Observable, of, Subject, tap } from "rxjs";
 import { RecordService } from "../../services/record.service";
 import { RecordDto } from "../../model/record.dto";
 import { StoreService } from "../../services/store.service";
@@ -17,6 +17,7 @@ export class HomeComponent extends UnsubscribeDirective implements OnInit, After
   columns: Array<any>;
   rows$: BehaviorSubject<Array<RecordDto>>;
   actualRecord$: BehaviorSubject<Array<RecordDto>>;
+  score$: Observable<number>;
 
   @ViewChild('smokingStatusTemplate') smokingStatusTemplate: TemplateRef<any> | undefined;
   @ViewChild('yesNoTemplate') yesNoTemplate: TemplateRef<any> | undefined;
@@ -27,6 +28,10 @@ export class HomeComponent extends UnsubscribeDirective implements OnInit, After
     this.fetchData$ = new Subject<Record>();
     this.rows$ = new BehaviorSubject<Array<RecordDto>>([]);
     this.actualRecord$ = new BehaviorSubject<Array<RecordDto>>([]);
+    this.score$ = this.rows$
+      .pipe(
+        map((rows) => rows.slice(0, 10).filter((row) => row.stroke).length)
+      );
     this.columns = []
   }
 
@@ -70,6 +75,10 @@ export class HomeComponent extends UnsubscribeDirective implements OnInit, After
       { name: "AVC", prop: "stroke", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0},
       { name: "Similaridade (%)", prop: "similarity", draggable: false, minWidth: 0},
     ];
+  }
+
+  back(): void {
+    this.rows$.next([]);
   }
 
   formSubmit(record: Record): void {

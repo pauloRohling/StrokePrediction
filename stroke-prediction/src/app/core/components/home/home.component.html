@@ -5,7 +5,19 @@
 <ng-container *ngIf="(rows$ | async)!.length > 0">
   <div class="flex flex-col container justify-start items-center w-full h-full space-y-6 overflow-x-hidden overflow-y-auto pt-6">
 
-    <div class="flex flex-col w-full">
+    <section class="flex flex-col w-full">
+      <span class="text-20 font-semibold">Resultado</span>
+      <div class="text-16 text-justify">
+        Entre os <strong>10</strong> registros mais semelhantes ao seu quadro, <strong>{{score$ | async}}</strong> deles tiveram um AVC.
+        <span
+          class="text-imperial-red hover:underline cursor-pointer"
+          (click)="back()">
+          Voltar para a página principal
+        </span>.
+      </div>
+    </section>
+
+    <section class="flex flex-col w-full">
       <span class="text-20 font-semibold">Caso de entrada</span>
       <ngx-datatable
         [limit]="1"
@@ -16,12 +28,12 @@
         [rowHeight]="50"
         [scrollbarH]="true"
         class="bootstrap w-full"></ngx-datatable>
-    </div>
+    </section>
 
-    <div class="flex flex-col w-full">
+    <section class="flex flex-col w-full">
       <span class="text-20 font-semibold">Casos de saída</span>
       <ngx-datatable
-        [limit]="20"
+        [limit]="15"
         [columns]="columns"
         [rows]="rows$ | async"
         [columnMode]="'force'"
@@ -30,7 +42,7 @@
         [rowHeight]="50"
         [scrollbarH]="true"
         class="bootstrap w-full"></ngx-datatable>
-    </div>
+    </section>
   </div>
 </ng-container>
 
