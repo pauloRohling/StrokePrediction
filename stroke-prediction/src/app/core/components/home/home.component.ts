@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Record } from "../../model/record";
 import { UnsubscribeDirective } from "../../directives/unsubscribe.directive";
-import { BehaviorSubject, catchError, concatMap, map, of, Subject } from "rxjs";
+import { BehaviorSubject, catchError, concatMap, map, of, Subject, tap } from "rxjs";
 import { RecordService } from "../../services/record.service";
 import { RecordDto } from "../../model/record.dto";
 import { StoreService } from "../../services/store.service";
@@ -16,6 +16,7 @@ export class HomeComponent extends UnsubscribeDirective implements OnInit, After
   fetchData$: Subject<Record>;
   columns: Array<any>;
   rows$: BehaviorSubject<Array<RecordDto>>;
+  actualRecord$: BehaviorSubject<Array<RecordDto>>;
 
   @ViewChild('smokingStatusTemplate') smokingStatusTemplate: TemplateRef<any> | undefined;
   @ViewChild('yesNoTemplate') yesNoTemplate: TemplateRef<any> | undefined;
@@ -25,12 +26,17 @@ export class HomeComponent extends UnsubscribeDirective implements OnInit, After
     super();
     this.fetchData$ = new Subject<Record>();
     this.rows$ = new BehaviorSubject<Array<RecordDto>>([]);
+    this.actualRecord$ = new BehaviorSubject<Array<RecordDto>>([]);
     this.columns = []
   }
 
   ngOnInit(): void {
     this.addSubscription(this.fetchData$
       .pipe(
+        tap((record) => {
+          const object: RecordDto = {...record, bmi: parseFloat((record.bmi!).toFixed(1))} as RecordDto;
+          this.actualRecord$.next([object])
+        }),
         concatMap((record) => {
           return this.recordService.getStrokePrediction(record)
             .pipe(
@@ -53,16 +59,16 @@ export class HomeComponent extends UnsubscribeDirective implements OnInit, After
 
   ngAfterViewInit(): void {
     this.columns = [
-      { name: "ID", prop: "id", width: 50, draggable: false},
-      { name: "Gênero", prop: "gender", width: 50, draggable: false, cellTemplate: this.genderTemplate},
-      { name: "Idade", prop: "age", width: 50, draggable: false},
-      { name: "Hipertensão", prop: "hypertension", width: 50, draggable: false, cellTemplate: this.yesNoTemplate},
-      { name: "Doença Cardíaca", prop: "heartDisease", width: 50, draggable: false, cellTemplate: this.yesNoTemplate},
-      { name: "Nível de Glicose", prop: "avgGlucoseLevel", width: 50, draggable: false},
-      { name: "IMC", prop: "bmi", width: 50, draggable: false},
-      { name: "Tabagismo", prop: "smokingStatus", width: 50, draggable: false, cellTemplate: this.smokingStatusTemplate},
-      { name: "AVC", prop: "stroke", width: 50, draggable: false, cellTemplate: this.yesNoTemplate},
-      { name: "Similaridade (%)", prop: "similarity", width: 50, draggable: false},
+      { name: "ID", prop: "id", draggable: false, minWidth: 0},
+      { name: "Gênero", prop: "gender", draggable: false, cellTemplate: this.genderTemplate, minWidth: 0},
+      { name: "Idade", prop: "age", draggable: false, minWidth: 0},
+      { name: "Hipertensão", prop: "hypertension", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0},
+      { name: "Doença Cardíaca", prop: "heartDisease", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0},
+      { name: "Nível de Glicose", prop: "avgGlucoseLevel", draggable: false, minWidth: 0},
+      { name: "IMC", prop: "bmi", draggable: false, minWidth: 0},
+      { name: "Tabagismo", prop: "smokingStatus", draggable: false, cellTemplate: this.smokingStatusTemplate, minWidth: 0},
+      { name: "AVC", prop: "stroke", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0},
+      { name: "Similaridade (%)", prop: "similarity", draggable: false, minWidth: 0},
     ];
   }
 

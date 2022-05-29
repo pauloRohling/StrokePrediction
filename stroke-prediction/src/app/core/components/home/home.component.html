@@ -3,17 +3,34 @@
 </ng-container>
 
 <ng-container *ngIf="(rows$ | async)!.length > 0">
-  <div class="flex container justify-center items-start w-full h-full overflow-x-hidden overflow-y-auto">
-    <ngx-datatable
-      [limit]="20"
-      [columns]="columns"
-      [rows]="rows$ | async"
-      [columnMode]="'force'"
-      [headerHeight]="50"
-      [footerHeight]="50"
-      [rowHeight]="50"
-      [scrollbarH]="true"
-      class="bootstrap w-full"></ngx-datatable>
+  <div class="flex flex-col container justify-start items-center w-full h-full space-y-6 overflow-x-hidden overflow-y-auto pt-6">
+
+    <div class="flex flex-col w-full">
+      <span class="text-20 font-semibold">Caso de entrada</span>
+      <ngx-datatable
+        [limit]="1"
+        [columns]="columns"
+        [rows]="actualRecord$ | async"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [rowHeight]="50"
+        [scrollbarH]="true"
+        class="bootstrap w-full"></ngx-datatable>
+    </div>
+
+    <div class="flex flex-col w-full">
+      <span class="text-20 font-semibold">Casos de saída</span>
+      <ngx-datatable
+        [limit]="20"
+        [columns]="columns"
+        [rows]="rows$ | async"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="50"
+        [scrollbarH]="true"
+        class="bootstrap w-full"></ngx-datatable>
+    </div>
   </div>
 </ng-container>
 

@@ -47,7 +47,8 @@ export class FormComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       let object = this.form.getRawValue();
-      const record: Record = {...object, bmi: object.weight / (object.height * object.height)};
+      const bmi = object.weight / (object.height * object.height);
+      const record: Record = {...object, bmi: parseFloat((bmi).toFixed(1))};
       this.formSubmit.next(record);
     }
   }
