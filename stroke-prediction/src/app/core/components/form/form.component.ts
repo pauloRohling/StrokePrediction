@@ -1,24 +1,26 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { IDataItem } from "../../model/data.item.interface";
 import { Record } from "../../model/record";
-import { RecordService } from "../../services/record.service";
-import { UnsubscribeDirective } from "../../directives/unsubscribe.directive";
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: "app-form",
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent extends UnsubscribeDirective implements OnInit {
+export class FormComponent implements OnInit {
 
   form: FormGroup;
   genders: Array<IDataItem>;
   yesNo: Array<IDataItem>;
   smoking: Array<IDataItem>;
 
-  constructor(private formBuilder: FormBuilder, private recordService: RecordService) {
-    super();
+  @Output() formSubmit: EventEmitter<Record>;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.formSubmit = new EventEmitter<Record>();
+
     this.form = this.formBuilder.group({
       gender: [null, Validators.required],
       age: [null, Validators.required],
@@ -29,6 +31,17 @@ export class FormComponent extends UnsubscribeDirective implements OnInit {
       height: [null, Validators.required],
       smokingStatus: [null, Validators.required],
     });
+
+    // this.form = this.formBuilder.group({
+    //   gender: [0, Validators.required],
+    //   age: [67, Validators.required],
+    //   hypertension: [false, Validators.required],
+    //   heartDisease: [true, Validators.required],
+    //   avgGlucoseLevel: [228.69, Validators.required],
+    //   weight: [82.4, Validators.required],
+    //   height: [1.5, Validators.required],
+    //   smokingStatus: [2, Validators.required],
+    // });
 
     this.genders = [
       { id: 0, display: "Masculino" },
@@ -56,7 +69,7 @@ export class FormComponent extends UnsubscribeDirective implements OnInit {
     if (this.form.valid) {
       let object = this.form.getRawValue();
       const record: Record = {...object, bmi: object.weight / (object.height * object.height)};
-      console.log(record);
+      this.formSubmit.next(record);
     }
   }
 

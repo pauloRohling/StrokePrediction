@@ -1,0 +1,19 @@
+<ng-container *ngIf="!(rows$ | async)?.length">
+  <app-form (formSubmit)="formSubmit($event)"></app-form>
+</ng-container>
+
+<ng-container *ngIf="(rows$ | async)!.length > 0">
+  <div class="flex container justify-center items-start w-full h-full overflow-x-hidden overflow-y-auto">
+    <ngx-datatable
+      [limit]="20"
+      [columns]="columns"
+      [rows]="rows$ | async"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="50"
+      [scrollbarH]="true"
+      class="bootstrap w-full"></ngx-datatable>
+  </div>
+</ng-container>
+

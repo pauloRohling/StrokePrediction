@@ -7,18 +7,24 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "./shared/shared.module";
 import { FormComponent } from "./core/components/form/form.component";
 import { HttpClientModule } from "@angular/common/http";
+import { HomeComponent } from './core/components/home/home.component';
+import { WeightComponent } from './core/components/weight/weight.component';
+import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent
+    FormComponent,
+    HomeComponent,
+    WeightComponent
   ],
   imports: [
     SharedModule,
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxDatatableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
