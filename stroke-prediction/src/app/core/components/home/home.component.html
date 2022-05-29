@@ -17,3 +17,14 @@
   </div>
 </ng-container>
 
+<ng-template #smokingStatusTemplate let-value="value">
+  <span>{{getSmokingStatus(value)}}</span>
+</ng-template>
+
+<ng-template #yesNoTemplate let-value="value">
+  <span>{{getYesNo(value)}}</span>
+</ng-template>
+
+<ng-template #genderTemplate let-value="value">
+  <span>{{getGender(value)}}</span>
+</ng-template>

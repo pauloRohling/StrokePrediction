@@ -3,7 +3,7 @@
 
   <div class="flex space-x-6 w-full">
     <app-select
-      [data]="genders"
+      [data]="storeService.genders"
       [form]="form"
       [control]="'gender'"
       [label]="'Gênero'"></app-select>
@@ -30,13 +30,13 @@
   </div>
 
   <app-select
-    [data]="yesNo"
+    [data]="storeService.yesNo"
     [form]="form"
     [control]="'hypertension'"
     [label]="'Histórico de hipertensão'"></app-select>
 
   <app-select
-    [data]="yesNo"
+    [data]="storeService.yesNo"
     [form]="form"
     [control]="'heartDisease'"
     [label]="'Histórico de doença cardíaca'"></app-select>
@@ -48,7 +48,7 @@
     [label]="'Nível médio de glicose'"></app-input-text>
 
   <app-select
-    [data]="smoking"
+    [data]="storeService.smokingStatus"
     [form]="form"
     [control]="'smokingStatus'"
     [label]="'Tabagismo'"></app-select>
