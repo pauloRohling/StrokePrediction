@@ -28,11 +28,11 @@ body {
 textarea,
 select {
   @apply w-full text-14 p-3 bg-transparent rounded-lg
-  border-onyx focus:ring-celadon-blue focus:border-celadon-blue;
+  border-onyx focus:ring-cerulean-frost focus:border-cerulean-frost;
 }
 
 button {
-  @apply border-onyx focus:outline-none focus:ring-1 focus:ring-celadon-blue focus:border-celadon-blue;
+  @apply border-onyx focus:outline-none focus:ring-1 focus:ring-cerulean-frost focus:border-cerulean-frost;
 }
 
 button:disabled {
@@ -50,5 +50,5 @@ input[type=number] {
 }
 
 .invalid-component {
-  @apply border-imperial-red;
+  @apply border-persian-red;
 }

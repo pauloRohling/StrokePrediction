@@ -9,18 +9,13 @@ module.exports = {
       white: "#FFFFFF",
       "alice-blue": "#E8F6FF",
       "cerulean-frost": "#6996B5",
+      "celadon-blue": "#457B9D",
       "mountain-meadow": "#22B893",
       "congo-pink": "#F48D7E",
       "fire-opal": "#E7605A",
       "persian-red": "#CF4038",
       "onyx": "#4E5558",
       "eerie-black": "#151D20",
-
-      "imperial-red": "#E63946",
-      "honeydew": "#F1FAEE",
-      "powder-blue": "#A8DADC",
-      "celadon-blue": "#457B9D",
-      "prussian-blue": "#1D3557",
     },
 
     fontSize: {
@@ -39,7 +34,7 @@ module.exports = {
 
     extend: {
       backgroundImage: {
-        'stroke': "url('/assets/images/illustration.jpg')"
+        'stroke': "url('assets/images/illustration.jpg')"
       }
     },
   },
