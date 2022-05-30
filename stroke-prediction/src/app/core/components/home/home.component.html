@@ -4,9 +4,9 @@
 
 <ng-container *ngIf="(rows$ | async)!.length > 0">
   <div class="flex w-full h-full py-8">
-    <div class="flex flex-col container justify-start items-center w-full h-full bg-white rounded-lg space-y-10 p-8">
+    <div class="flex flex-col container justify-start items-center w-full h-full bg-white overflow-y-auto rounded-lg space-y-10 p-8">
 
-      <section class="flex flex-col w-full space-y-2">
+      <section class="flex flex-col w-full h-full space-y-2">
 
         <div class="h-8 border-b border-cerulean-frost w-full">
           <span class="text-24 text-cerulean-frost tracking-wide font-bold truncate">RESULTADO</span>
@@ -22,7 +22,7 @@
         </div>
       </section>
 
-      <section class="flex flex-col w-full space-y-2">
+      <section class="flex flex-col w-full h-full space-y-2">
 
         <div class="h-8 border-b border-cerulean-frost w-full">
           <span class="text-24 text-cerulean-frost tracking-wide font-bold truncate">CASO DE ENTRADA</span>
@@ -39,7 +39,7 @@
           class="bootstrap w-full"></ngx-datatable>
       </section>
 
-      <section class="flex flex-col w-full space-y-2">
+      <section class="flex flex-col w-full h-full space-y-2 relative">
 
         <div class="h-8 border-b border-cerulean-frost w-full">
           <span class="text-24 text-cerulean-frost tracking-wide font-bold truncate">CASOS DE SAÍDA</span>
@@ -54,7 +54,7 @@
           [footerHeight]="50"
           [rowHeight]="50"
           [scrollbarH]="true"
-          class="bootstrap w-full"></ngx-datatable>
+          class="bootstrap w-full h-full"></ngx-datatable>
       </section>
     </div>
   </div>
