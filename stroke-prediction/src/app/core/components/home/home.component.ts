@@ -64,16 +64,16 @@ export class HomeComponent extends UnsubscribeDirective implements OnInit, After
 
   ngAfterViewInit(): void {
     this.columns = [
-      { name: "ID", prop: "id", draggable: false, minWidth: 0},
-      { name: "Gênero", prop: "gender", draggable: false, cellTemplate: this.genderTemplate, minWidth: 0},
-      { name: "Idade", prop: "age", draggable: false, minWidth: 0},
-      { name: "Hipertensão", prop: "hypertension", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0},
-      { name: "Doença Cardíaca", prop: "heartDisease", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0},
-      { name: "Nível de Glicose", prop: "avgGlucoseLevel", draggable: false, minWidth: 0},
-      { name: "IMC", prop: "bmi", draggable: false, minWidth: 0},
-      { name: "Tabagismo", prop: "smokingStatus", draggable: false, cellTemplate: this.smokingStatusTemplate, minWidth: 0},
-      { name: "AVC", prop: "stroke", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0},
-      { name: "Similaridade (%)", prop: "similarity", draggable: false, minWidth: 0},
+      { name: "ID", prop: "id", draggable: false, minWidth: 0, width: 40},
+      { name: "Gênero", prop: "gender", draggable: false, cellTemplate: this.genderTemplate, minWidth: 0, width: 40},
+      { name: "Idade", prop: "age", draggable: false, minWidth: 0, width: 40},
+      { name: "Hipertensão", prop: "hypertension", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0, width: 60},
+      { name: "Doença Cardíaca", prop: "heartDisease", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0, width: 90},
+      { name: "Nível de Glicose", prop: "avgGlucoseLevel", draggable: false, minWidth: 0, width: 90},
+      { name: "IMC", prop: "bmi", draggable: false, minWidth: 0, width: 40},
+      { name: "Tabagismo", prop: "smokingStatus", draggable: false, cellTemplate: this.smokingStatusTemplate, minWidth: 0, width: 80},
+      { name: "AVC", prop: "stroke", draggable: false, cellTemplate: this.yesNoTemplate, minWidth: 0, width: 40},
+      { name: "Similaridade (%)", prop: "similarity", draggable: false, minWidth: 0, width: 80},
     ];
   }
 

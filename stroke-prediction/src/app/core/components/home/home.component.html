@@ -3,58 +3,60 @@
 </ng-container>
 
 <ng-container *ngIf="(rows$ | async)!.length > 0">
-  <div class="flex flex-col container justify-start items-center w-full h-full space-y-10 pt-6">
+  <div class="flex w-full h-full py-8">
+    <div class="flex flex-col container justify-start items-center w-full h-full bg-white rounded-lg space-y-10 p-8">
 
-    <section class="flex flex-col w-full space-y-2">
+      <section class="flex flex-col w-full space-y-2">
 
-      <div class="h-8 border-b border-cerulean-frost w-full">
-        <span class="text-24 text-cerulean-frost tracking-wide font-bold truncate">RESULTADO</span>
-      </div>
+        <div class="h-8 border-b border-cerulean-frost w-full">
+          <span class="text-24 text-cerulean-frost tracking-wide font-bold truncate">RESULTADO</span>
+        </div>
 
-      <div class="text-16 text-justify">
-        Entre os <strong>10</strong> registros mais semelhantes ao seu quadro, <strong>{{score$ | async}}</strong> deles tiveram um AVC.
-        <span
-          class="text-cerulean-frost hover:underline cursor-pointer"
-          (click)="back()">
+        <div class="text-16 text-justify">
+          Entre os <strong>10</strong> registros mais semelhantes ao seu quadro, <strong>{{score$ | async}}</strong> deles tiveram um AVC.
+          <span
+            class="text-cerulean-frost hover:underline cursor-pointer"
+            (click)="back()">
           Voltar para a página principal.
         </span>
-      </div>
-    </section>
+        </div>
+      </section>
 
-    <section class="flex flex-col w-full space-y-2">
+      <section class="flex flex-col w-full space-y-2">
 
-      <div class="h-8 border-b border-cerulean-frost w-full">
-        <span class="text-24 text-cerulean-frost tracking-wide font-bold truncate">CASO DE ENTRADA</span>
-      </div>
+        <div class="h-8 border-b border-cerulean-frost w-full">
+          <span class="text-24 text-cerulean-frost tracking-wide font-bold truncate">CASO DE ENTRADA</span>
+        </div>
 
-      <ngx-datatable
-        [limit]="1"
-        [columns]="columns"
-        [rows]="actualRecord$ | async"
-        [columnMode]="'force'"
-        [headerHeight]="50"
-        [rowHeight]="50"
-        [scrollbarH]="true"
-        class="bootstrap w-full bg-alice-blue"></ngx-datatable>
-    </section>
+        <ngx-datatable
+          [limit]="1"
+          [columns]="columns"
+          [rows]="actualRecord$ | async"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [rowHeight]="50"
+          [scrollbarH]="true"
+          class="bootstrap w-full"></ngx-datatable>
+      </section>
 
-    <section class="flex flex-col w-full space-y-2">
+      <section class="flex flex-col w-full space-y-2">
 
-      <div class="h-8 border-b border-cerulean-frost w-full">
-        <span class="text-24 text-cerulean-frost tracking-wide font-bold truncate">CASOS DE SAÍDA</span>
-      </div>
+        <div class="h-8 border-b border-cerulean-frost w-full">
+          <span class="text-24 text-cerulean-frost tracking-wide font-bold truncate">CASOS DE SAÍDA</span>
+        </div>
 
-      <ngx-datatable
-        [limit]="12"
-        [columns]="columns"
-        [rows]="rows$ | async"
-        [columnMode]="'force'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [rowHeight]="50"
-        [scrollbarH]="true"
-        class="bootstrap w-full bg-alice-blue"></ngx-datatable>
-    </section>
+        <ngx-datatable
+          [limit]="12"
+          [columns]="columns"
+          [rows]="rows$ | async"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="50"
+          [scrollbarH]="true"
+          class="bootstrap w-full"></ngx-datatable>
+      </section>
+    </div>
   </div>
 </ng-container>
 
