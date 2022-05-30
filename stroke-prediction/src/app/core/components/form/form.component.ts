@@ -19,15 +19,26 @@ export class FormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, public storeService: StoreService) {
     this.formSubmit = new EventEmitter<Record>();
 
+    // this.form = this.formBuilder.group({
+    //   gender: [null, Validators.required],
+    //   age: [null, Validators.required],
+    //   hypertension: [null, Validators.required],
+    //   heartDisease: [null, Validators.required],
+    //   avgGlucoseLevel: [null, Validators.required],
+    //   weight: [null, Validators.required],
+    //   height: [null, Validators.required],
+    //   smokingStatus: [null, Validators.required],
+    // });
+
     this.form = this.formBuilder.group({
-      gender: [null, Validators.required],
-      age: [null, Validators.required],
-      hypertension: [null, Validators.required],
-      heartDisease: [null, Validators.required],
-      avgGlucoseLevel: [null, Validators.required],
-      weight: [null, Validators.required],
-      height: [null, Validators.required],
-      smokingStatus: [null, Validators.required],
+      gender: [0, Validators.required],
+      age: [67, Validators.required],
+      hypertension: [false, Validators.required],
+      heartDisease: [true, Validators.required],
+      avgGlucoseLevel: [228.69, Validators.required],
+      weight: [82.4, Validators.required],
+      height: [1.5, Validators.required],
+      smokingStatus: [2, Validators.required],
     });
 
     const weight = {...(this.storeService.weights$.getValue())};

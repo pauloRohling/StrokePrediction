@@ -39,10 +39,6 @@ public class RecordService {
                 .collect(Collectors.toList());
     }
 
-    public List<RecordDto> getRecordsBySimilarity(Record record) {
-        return this.getRecordsBySimilarity(record, new RecordWeight());
-    }
-
     private RecordDto toDto(Record record) {
         RecordDto recordDto = new RecordDto();
         recordDto.setId(record.getId());

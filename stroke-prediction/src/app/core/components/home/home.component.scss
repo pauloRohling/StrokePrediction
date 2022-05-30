@@ -1,3 +1,8 @@
 :host {
-  @apply flex container w-full h-full overflow-hidden;
+  @apply flex container w-full h-full;
+}
+
+
+.ngx-datatable.bootstrap {
+  @apply text-16 #{!important};
 }

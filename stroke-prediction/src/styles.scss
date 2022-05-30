@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
-  @apply font-inter text-14;
+  @apply font-inter text-14 text-eerie-black;
 }
 
 [type='text'],
@@ -27,7 +27,12 @@ body {
 [multiple],
 textarea,
 select {
-  @apply w-full text-14 p-3 bg-transparent rounded-lg;
+  @apply w-full text-14 p-3 bg-transparent rounded-lg
+  border-onyx focus:ring-celadon-blue focus:border-celadon-blue;
+}
+
+button {
+  @apply border-onyx focus:outline-none focus:ring-1 focus:ring-celadon-blue focus:border-celadon-blue;
 }
 
 button:disabled {

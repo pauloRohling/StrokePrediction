@@ -7,6 +7,15 @@ module.exports = {
       transparent: "#FFFFFF00",
       current: "currentColor",
       white: "#FFFFFF",
+      "alice-blue": "#E8F6FF",
+      "cerulean-frost": "#6996B5",
+      "mountain-meadow": "#22B893",
+      "congo-pink": "#F48D7E",
+      "fire-opal": "#E7605A",
+      "persian-red": "#CF4038",
+      "onyx": "#4E5558",
+      "eerie-black": "#151D20",
+
       "imperial-red": "#E63946",
       "honeydew": "#F1FAEE",
       "powder-blue": "#A8DADC",
@@ -28,7 +37,11 @@ module.exports = {
       'montserrat': ['Montserrat', 'sans-serif']
     },
 
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'stroke': "url('/assets/images/illustration.jpg')"
+      }
+    },
   },
   plugins: [
     require("@tailwindcss/forms")
